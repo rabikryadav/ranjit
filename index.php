@@ -27,16 +27,18 @@ include 'connection.php';
 				</div><br><br>
 			</form>
 		</div>
+		<hr>
 		<h2>DataList</h2>
 		<div>
 			<table>
 				<thead>
 					<tr>
-						<th>id</th>
-						<th>name</th>
-						<th>degree</th>
-						<th>mobile</th>
-						<th>email</th>
+						<th>Id</th>
+						<th>Name</th>
+						<th>Degree</th>
+						<th>Mobile</th>
+						<th>Email</th>
+						<th>Operation</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -51,6 +53,7 @@ include 'connection.php';
 						<td><?php echo $res['degree']; ?></td>
 						<td><?php echo $res['mobile']; ?></td>
 						<td><?php echo $res['email']; ?></td>
+						<td><a href="delete.php?id=<?php echo $res['id']; ?>">Delete</a></td>
 					</tr>
 					<?php
 					}
