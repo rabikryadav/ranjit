@@ -1,3 +1,6 @@
+<?php
+include 'connection.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -5,7 +8,11 @@
 	</head>
 	<body>
 	<center>
-		<header><h1>Registration Form</h1><hr><br></header>
+		<header>
+			<h1>Registration Form</h1>
+			<hr><br>
+		</header>
+		<div>
 			<form action="#" method="Post">
 				<div>
 					<input type="text" name="name" placeholder="enter your name*">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -19,14 +26,43 @@
 					<input type="submit" name="submit" value="Register">
 				</div><br><br>
 			</form>
+		</div>
+		<h2>DataList</h2>
+		<div>
+			<table>
+				<thead>
+					<tr>
+						<th>id</th>
+						<th>name</th>
+						<th>degree</th>
+						<th>mobile</th>
+						<th>email</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+					$selectquery = "select * from datalist";
+					$select_from_db = mysqli_query($connection, $selectquery);
+					while ($res = mysqli_fetch_array($select_from_db)) {
+					?>
+					<tr>
+						<td><?php echo $res['id']; ?></td>
+						<td><?php echo $res['name']; ?></td>
+						<td><?php echo $res['degree']; ?></td>
+						<td><?php echo $res['mobile']; ?></td>
+						<td><?php echo $res['email']; ?></td>
+					</tr>
+					<?php
+					}
+					?>
+				</tbody>
+			</table>
+		</div>
 	</center>
 	</body>
 </html>
 
 <?php 
-
-include 'connection.php';
-
 if (isset($_POST['submit'])) {
 	$name = $_POST['name'];
 	$degree = $_POST['degree'];
